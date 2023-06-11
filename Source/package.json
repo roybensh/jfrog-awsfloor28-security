@@ -1,0 +1,22 @@
+{
+  "name": "floor28_sample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": ""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "cors.js": "^0.0.1-security",
+    "ejs": "3.1.6",
+    "express": "^4.18.2",
+    "jquery": "3.4",
+    "lodash": "^4.17.21",
+    "parse-url": "^6.0.5",
+    "undici": "5.8.0"
+  }
+}
