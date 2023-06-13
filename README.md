@@ -6,4 +6,4 @@ In this repository you will find all the instructions and relevant materials to 
 
 Good Luck! 
 
-![](./Images/event_image.jpeg)
+![](./Images/event_image.png)
