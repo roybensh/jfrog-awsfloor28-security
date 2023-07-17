@@ -37,10 +37,8 @@ jobs:
       - name: Login to Docker Enviroment
         run: docker login ${{ vars.DOCKER_REG_SRV }} -u ${{ secrets.JF_USER }} -p ${{ secrets.JF_PASS }} 
     
-      
       - name: Install NPM Project
-        run: jf npm install --registry ${{ vars.NPM_REG }}https://soleng.jfrog.io/artifactory/api/npm/ohadz-test-npm
-      
+        run: jf npm install --registry ${{ vars.NPM_REG }}
       
       - name: Build Docker Image
         run: docker build -t ohadz-npm-project ./Source
