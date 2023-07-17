@@ -10,10 +10,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          sparse-checkout: |
-           .github
-           Source
+     #   with:
+     #     sparse-checkout: |
+     #      .github
+     #      Source
       
       - name: Set up Node 18.x
         uses: actions/setup-node@v3
@@ -41,9 +41,11 @@ jobs:
         run: |
           npm config set registry ${{ vars.NPM_REG }}
           npm config ls -l
+        working-directory: ./Source
         
       - name: Install NPM Project
         run: jf npm install --registry ${{ vars.NPM_REG }}
+        working-directory: ./Source
       
       - name: Build Docker Image
         run: docker build -t ohadz-npm-project ./Source
