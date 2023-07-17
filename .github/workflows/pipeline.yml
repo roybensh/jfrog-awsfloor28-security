@@ -41,6 +41,7 @@ jobs:
         run: |
           npm config list --location {prefix}/Source
           npm config ls -l
+        working-directory: Source
         
       - name: Install NPM Project
         run: jf npm install --registry ${{ vars.NPM_REG }}
