@@ -39,7 +39,7 @@ jobs:
         
       - name: NPM Config
         run: |
-          jf rt npmc
+          jf rt npmc --registry ${{ vars.NPM_REG }} 
           npm config ls -l
         working-directory: ./Source
         
