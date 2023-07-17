@@ -24,7 +24,7 @@ jobs:
         uses: jfrog/setup-jfrog-cli@v3
         env:
           JF_URL: ${{ vars.JF_URL }}
-          JF_USER: ${{ secrets.JF_USER }}
+          JF_USER: ${{ vars.JF_USER }}
           JF_PASSWORD: ${{ secrets.JF_PASS }}
           SERVER_ID: setup-jfrog-cli-server
       
@@ -35,16 +35,13 @@ jobs:
           jf -v
     
       - name: NPM Config
-        run: |
-          jf npmc --server-id-resolve=setup-jfrog-cli-server --server-id-deploy=setup-jfrog-cli-server --repo-deploy ${{ vars.NPM_REPO }} --repo-resolve ${{ vars.NPM_REPO }} --global
-          npm config set registry ${{ vars.NPM_REG }}
-          npm config ls -l
+        run: jf npmc --server-id-resolve=setup-jfrog-cli-server --server-id-deploy=setup-jfrog-cli-server --repo-deploy ${{ vars.NPM_REPO }} --repo-resolve ${{ vars.NPM_REPO }} --global
+         # npm config set registry ${{ vars.NPM_REG }}
+         # npm config ls -l
         working-directory: ./Source
         
       - name: Install NPM Project
-        run: |
-          npm login
-          jf npm install 
+        run: jf npm install 
         working-directory: ./Source
       
       - name: Build Docker Image
