@@ -34,23 +34,23 @@ jobs:
           jf rt ping
           jf -v
     
-      - name: Login to Docker Enviroment
-        run: docker login ${{ vars.DOCKER_REG_SRV }} -u ${{ secrets.JF_USER }} -p ${{ secrets.JF_PASS }} 
-        
       - name: NPM Config
         run: |
           jf npmc --server-id-resolve=setup-jfrog-cli-server --server-id-deploy=setup-jfrog-cli-server --repo-deploy ${{ vars.NPM_REPO }} --repo-resolve ${{ vars.NPM_REPO }} --global
-
+          npm config set registry ${{ vars.NPM_REG }}
           npm config ls -l
         working-directory: ./Source
         
       - name: Install NPM Project
-        run: jf npm install --server-id-resolve=setup-jfrog-cli-server --server-id-deploy=setup-jfrog-cli-server --repo-deploy ${{ vars.NPM_REPO }} --repo-resolve ${{ vars.NPM_REPO }} --global
+        run: jf npm install 
         working-directory: ./Source
       
       - name: Build Docker Image
         run: docker build -t ohadz-npm-project ./Source
-     
+      
+      - name: Login to Docker Enviroment
+        run: docker login ${{ vars.DOCKER_REG_SRV }} -u ${{ secrets.JF_USER }} -p ${{ secrets.JF_PASS }} 
+        
       - name: Tag Docker Image
         run: docker tag ohadz-npm-project:latest soleng.jfrog.io/ohadz-test-docker/ohadz-npm-project:latest
         
