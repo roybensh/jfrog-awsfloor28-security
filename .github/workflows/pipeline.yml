@@ -37,15 +37,13 @@ jobs:
       - name: Login to Docker Enviroment
         run: docker login ${{ vars.DOCKER_REG_SRV }} -u ${{ secrets.JF_USER }} -p ${{ secrets.JF_PASS }} 
         
-      - name: List NPM Config
+      - name: NPM Config
         run: |
-          npm config list --location {prefix}/Source
+          npm config set registry ${{ vars.NPM_REG }}
           npm config ls -l
-        working-directory: Source
         
       - name: Install NPM Project
         run: jf npm install --registry ${{ vars.NPM_REG }}
-        working-directory: Source
       
       - name: Build Docker Image
         run: docker build -t ohadz-npm-project ./Source
