@@ -42,7 +42,9 @@ jobs:
         working-directory: ./Source
         
       - name: Install NPM Project
-        run: jf npm install 
+        run: |
+          npm login
+          jf npm install 
         working-directory: ./Source
       
       - name: Build Docker Image
