@@ -38,7 +38,7 @@ jobs:
         run: docker login ${{ vars.DOCKER_REG_SRV }} -u ${{ secrets.JF_USER }} -p ${{ secrets.JF_PASS }} 
         
       - name: List NPM Config
-        run: npm config list
+        run: npm config list --location {prefix}/Source
         
       - name: Install NPM Project
         run: jf npm install --registry ${{ vars.NPM_REG }}
