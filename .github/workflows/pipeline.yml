@@ -69,4 +69,6 @@ jobs:
       - name: Scan Build
         run: jf bs --fail=false
           
+      - name: Test Secret Detection
+        run: echo "This is a test password SqcyDpetv+pCsbNYWHDLE8yR5mJ13MI+4d8NOwtM "
     
