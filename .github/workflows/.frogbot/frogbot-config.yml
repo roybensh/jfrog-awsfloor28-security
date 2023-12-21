@@ -1,0 +1,9 @@
+- params:
+    git:
+      repoName: jfrog-awsfloor28-security
+      branches:
+        - main
+    scan:
+      projects:
+        - workingDirs:
+            - ./Source
